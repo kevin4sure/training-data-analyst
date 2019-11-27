@@ -80,7 +80,7 @@ def is_popular(pcoll):
  return (pcoll
     | 'PackageUse' >> beam.FlatMap(lambda rowdict: packageUse(rowdict['content'], 'import'))
     | 'TotalUse' >> beam.CombinePerKey(sum)
-    | 'Top_NNN' >> beam.transforms.combiners.Top.Of(TOPN, by_value) )
+    | 'Top_NNN' >> beam.transforms.combiners.Top.Of(TOPN) )
 
 
 def packageHelp(record, keyword):
